@@ -172,6 +172,17 @@ static const Key keys[] = {
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_parenleft,                     7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenright,                    8),
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,           quit,             {0} },
+  // Volume
+  { 0,                         XKB_KEY_XF86AudioRaiseVolume,  spawn,  SHCMD("wpctl set-volume @DEFAULT_SINK@ 5%+") },
+  { 0,                         XKB_KEY_XF86AudioLowerVolume,  spawn,  SHCMD("wpctl set-volume @DEFAULT_SINK@ 5%-") },
+  { 0,                         XKB_KEY_XF86AudioMute,         spawn,  SHCMD("wpctl set-mute @DEFAULT_SINK@ toggle") },
+
+  // Mic mute
+  { 0,                         XKB_KEY_XF86AudioMicMute,      spawn,  SHCMD("wpctl set-mute @DEFAULT_SOURCE@ toggle") },
+
+  // Brightness (requires brightnessctl or light)
+  { 0,                         XKB_KEY_XF86MonBrightnessUp,   spawn,  SHCMD("brightnessctl set 5%+") },
+  { 0,                         XKB_KEY_XF86MonBrightnessDown, spawn,  SHCMD("brightnessctl set 5%-") },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
